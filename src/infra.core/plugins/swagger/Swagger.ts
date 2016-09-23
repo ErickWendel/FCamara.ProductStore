@@ -23,7 +23,7 @@ export default (): IPlugin => {
                         if (err) {
                             console.log(err);
                         } else {
-                            console.log('Server running at:', server.info.uri);
+                            console.log('Server re-running at:', server.info.uri);
                         }
                     });
                 });

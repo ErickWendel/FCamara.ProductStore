@@ -28,6 +28,15 @@
     },
     "jsonwebtoken/jsonwebtoken.d.ts": {
       "commit": "d79cd56465f9ed53172dc1617c863a164b0fd7fb"
+    },
+    "inversify/inversify.d.ts": {
+      "commit": "8eedd1b9f7f009f14435f73c53a88d537c546a02"
+    },
+    "bluebird/bluebird-2.0.d.ts": {
+      "commit": "8eedd1b9f7f009f14435f73c53a88d537c546a02"
+    },
+    "reflect-metadata/reflect-metadata.d.ts": {
+      "commit": "8eedd1b9f7f009f14435f73c53a88d537c546a02"
     }
   }
 }
