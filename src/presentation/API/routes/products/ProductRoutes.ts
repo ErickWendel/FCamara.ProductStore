@@ -7,7 +7,8 @@ import { KernelConfig } from './../../../../infra.core.ioC/config/Config';
 import { IProductApplication } from './../../../../domain/contracts/application/IProductApplication';
 import { IBaseRoute as IBaseRoute } from '../../../../domain/contracts/routes/IBaseRoute';
 import Constants from './../../../../infra.core/config/constants/constants';
-import Product from './../../../../domain/entities/Product';;
+import Product from './../../../../domain/entities/Product';
+
 export class ProductRoutes extends BaseRoutes implements IBaseRoute {
     private _productController: ProductController;
 

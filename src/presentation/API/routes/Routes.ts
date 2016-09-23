@@ -5,7 +5,7 @@ import { AuthRoutes } from '../routes/auth/AuthRoutes';
 import { ProductRoutes } from '../routes/products/ProductRoutes';
 import { BaseRoutes } from './base/BaseRoutes';
 import Jwt from '../../../infra.core/auth/jwt';
-import { BaseRoute as IBaseRoute } from '../../../domain/contracts/routes/BaseRoute';
+import { IBaseRoute as IBaseRoute } from '../../../domain/contracts/routes/BaseRoute';
 let hapiJwt = require('hapi-auth-jwt2');
 
 export default class Routes {

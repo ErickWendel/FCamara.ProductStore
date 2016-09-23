@@ -1,4 +1,4 @@
-import * as Hapi from "hapi"; 
+import * as Hapi from "hapi";
 import ProductsController from '../../controllers/ProductsController';
 import LoginController from '../../controllers/LoginController';
 import Jwt from '../../../../infra.core/auth/jwt';
@@ -17,7 +17,7 @@ export class AuthRoutes extends BaseRoutes implements IBaseRoute {
         this._loginController = new LoginController(server, login);
     }
 
-    
+
     configAuth(): Hapi.Server {
         this._server
             .auth
@@ -31,17 +31,18 @@ export class AuthRoutes extends BaseRoutes implements IBaseRoute {
 
     init(): Hapi.Server {
         this._server = this.configAuth();
-        this._server.route({
-            method: 'GET',
-            path: '/token',
-            config: {
-                auth: false,
-                handler: this._loginController.getToken,
-                description: 'Get Token ',
-                notes: 'Retorna um token para o usuario',
-                tags: ['api'],
-            }
-        });
+        this._server.route(
+            <Hapi.IRouteConfiguration>{
+                method: 'GET',
+                path: '/token',
+                config: {
+                    auth: false,
+                    handler: this._loginController.getToken,
+                    description: 'Get Token ',
+                    notes: 'Retorna um token para o usuario',
+                    tags: ['api']
+                }
+            });
         return this._server;
     }
 }
