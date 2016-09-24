@@ -1,4 +1,7 @@
 import * as Hapi from 'hapi';
-export interface IProductController {
-    products(request: Hapi.Request, reply: Hapi.IReply): Hapi.Response;
+import * as async from 'bluebird';
+    export interface IProductController {
+    insertMany(request: Hapi.Request, reply: Hapi.IReply): async<Object>;
+    list(request: Hapi.Request, reply: Hapi.IReply): async<Object>;
+
 }

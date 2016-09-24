@@ -8,6 +8,7 @@ import { IProductApplication } from './../../../../domain/contracts/application/
 import { IBaseRoute as IBaseRoute } from '../../../../domain/contracts/routes/IBaseRoute';
 import Constants from './../../../../infra.core/config/constants/constants';
 import Product from './../../../../domain/entities/Product';
+const config = require('../../../../../config');
 
 export class ProductRoutes extends BaseRoutes implements IBaseRoute {
     private _productController: ProductController;
@@ -15,7 +16,7 @@ export class ProductRoutes extends BaseRoutes implements IBaseRoute {
     constructor(server: Hapi.Server) {
         super(server);
         const kernel = KernelConfig();
-        const product = kernel.get<IProductApplication>("ProductApplication");
+        const product = kernel.get<IProductApplication>("IProductApplication");
         this._productController = new ProductController(server, product);
 
     }
@@ -23,19 +24,37 @@ export class ProductRoutes extends BaseRoutes implements IBaseRoute {
     public init(): Hapi.Server {
         this._server.route(
             <Hapi.IRouteConfiguration>{
-                method: 'GET',
-                path: '/products',
+                method: config.endpoints.product.list.type,
+                path: config.endpoints.product.list.url,
                 config: {
-                    handler: this._productController.products,
-                    description: 'Listar Produtos ',
-                    notes: 'Retorna a lista de produtos',
+                    handler: this._productController.list,
+                    description: 'Product List ',
+                    notes: 'Returns the product list',
                     tags: ['api'],
-                    auth: {
+                    auth:
+                    {
                         strategies: [Constants.JWT.STRATEGY]
                     }
                 },
 
             });
+        this._server.route(
+            <Hapi.IRouteConfiguration>{
+                method: config.endpoints.product.insertMany.type,
+                path: config.endpoints.product.insertMany.url,
+                config: {
+                    handler: this._productController.insertMany,
+                    description: 'Insert Initial Data',
+                    notes: 'Insert fake data in database',
+                    tags: ['api'],
+                    auth:
+                    {
+                        strategies: [Constants.JWT.STRATEGY]
+                    }
+                },
+
+            });
+
 
         return this._server;
     }

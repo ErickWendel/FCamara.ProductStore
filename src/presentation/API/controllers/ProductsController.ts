@@ -1,7 +1,8 @@
 /// <reference path="../../../../typings/tsd.d.ts" />
 
 import * as Hapi from "hapi";
-import * as Boom from "boom";
+import * as Promise from 'bluebird';
+import * as Boom from 'boom';
 import "reflect-metadata";
 import { injectable, inject, } from "inversify";
 import { IProductController } from '../../../domain/contracts/controllers/IProductController';
@@ -12,21 +13,28 @@ import BaseController from './base/BaseController';
 
 
 export default class ProductsController extends BaseController implements IProductController {
-    private productApplication: IProductApplication;
+    private _productApplication: IProductApplication;
 
     constructor(server: Hapi.Server, productApplication: IProductApplication) {
         super(server);
-        this.productApplication = productApplication;
+        this._productApplication = productApplication;
     }
-    public products(request: Hapi.Request, reply: Hapi.IReply): Hapi.Response {
-        const id = request.params["id"];
-        if (1 === 1)
-            return reply(true);
+    list = (request: Hapi.Request, reply: Hapi.IReply): Promise<Object> => {
+        return this._productApplication
+            .list()
+            .then(reply)
+            .catch((err) => reply(Boom.badRequest(`error on get: ${err}`)))
 
-        // else if (2 === 2)
-        //     return reply(Boom.notFound());
 
-        return reply(Boom.badImplementation(null));
     }
+    insertMany = (request: Hapi.Request, reply: Hapi.IReply): Promise<Object> => {
+        return this._productApplication
+            .insertMany()
+            .then(() => reply('OK'))
+            .catch((err) => reply(Boom.badRequest(`error on insert ${err}`)));
+    }
+
+
+
 
 }

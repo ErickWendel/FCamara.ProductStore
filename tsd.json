@@ -6,7 +6,7 @@
   "bundle": "typings/tsd.d.ts",
   "installed": {
     "node/node.d.ts": {
-      "commit": "d79cd56465f9ed53172dc1617c863a164b0fd7fb"
+      "commit": "8770da2c8f9aa3c729d9a55916f851025a6a4027"
     },
     "chai/chai.d.ts": {
       "commit": "d79cd56465f9ed53172dc1617c863a164b0fd7fb"
@@ -37,6 +37,27 @@
     },
     "reflect-metadata/reflect-metadata.d.ts": {
       "commit": "8eedd1b9f7f009f14435f73c53a88d537c546a02"
+    },
+    "bluebird/bluebird.d.ts": {
+      "commit": "8770da2c8f9aa3c729d9a55916f851025a6a4027"
+    },
+    "supertest/supertest.d.ts": {
+      "commit": "8770da2c8f9aa3c729d9a55916f851025a6a4027"
+    },
+    "superagent/superagent.d.ts": {
+      "commit": "8770da2c8f9aa3c729d9a55916f851025a6a4027"
+    },
+    "mime/mime.d.ts": {
+      "commit": "8770da2c8f9aa3c729d9a55916f851025a6a4027"
+    },
+    "serve-static/serve-static.d.ts": {
+      "commit": "8770da2c8f9aa3c729d9a55916f851025a6a4027"
+    },
+    "express-serve-static-core/express-serve-static-core.d.ts": {
+      "commit": "8770da2c8f9aa3c729d9a55916f851025a6a4027"
+    },
+    "express/express.d.ts": {
+      "commit": "8770da2c8f9aa3c729d9a55916f851025a6a4027"
     }
   }
 }

@@ -7,13 +7,14 @@ import { BaseRoutes } from '../base/BaseRoutes';
 import { KernelConfig } from './../../../../infra.core.ioC/config/Config';
 import { ILoginApplication } from './../../../../domain/contracts/application/ILoginApplication';
 import { IBaseRoute } from '../../../../domain/contracts/routes/IBaseRoute';
+const config = require('../../../../../config');
 
 export class AuthRoutes extends BaseRoutes implements IBaseRoute {
     private _loginController: LoginController;
     constructor(server: Hapi.Server) {
         super(server);
         const kernel = KernelConfig();
-        const login = kernel.get<ILoginApplication>("LoginApplication");
+        const login = kernel.get<ILoginApplication>("ILoginApplication");
         this._loginController = new LoginController(server, login);
     }
 
@@ -33,13 +34,13 @@ export class AuthRoutes extends BaseRoutes implements IBaseRoute {
         this._server = this.configAuth();
         this._server.route(
             <Hapi.IRouteConfiguration>{
-                method: 'GET',
-                path: '/token',
+                method: config.endpoints.auth.token.type,
+                path: config.endpoints.auth.token.url, 
                 config: {
                     auth: false,
                     handler: this._loginController.getToken,
                     description: 'Get Token ',
-                    notes: 'Retorna um token para o usuario',
+                    notes: 'Returns the user token',
                     tags: ['api']
                 }
             });

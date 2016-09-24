@@ -11,7 +11,6 @@ export default class Jwt {
 
 
     public setToken(accountId: Object): Object {
-        //REVER O MOTIVO DE NAO GUARDAR O OBJETO
         return jwt.sign(Constants.JWT.DEFAULT_OBJECT,
 
             Constants.JWT.PRIVATE_KEY_JWT,
@@ -24,15 +23,10 @@ export default class Jwt {
     }
 
     public static validateToken(request, decodedToken, callback) {
-        console.log('decodedToken', decodedToken.teste);
         var error;
-        var credentials = { 'teste': 1 };
+        var credentials = { 'fakeUser': 'erickwendel' };
+        return callback(error, false, credentials);
 
-        if (!credentials) {
-            return callback(error, false, credentials);
-        }
-
-        return callback(error, true, credentials);
     };
 
 }

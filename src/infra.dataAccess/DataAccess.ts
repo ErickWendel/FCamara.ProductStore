@@ -1,16 +1,14 @@
-/// <reference path="../../../typings/tsd.d.ts" />
-
 import * as Mongoose from "mongoose";
-import Constants from "./../../config/constants/Constants";
+import Constants from "./../infra.core/config/constants/Constants";
 
-export default class DataAccess {
+class DataAccess {
     static mongooseInstance: any;
     static mongooseConnection: Mongoose.Connection;
 
     constructor() {
         DataAccess.connect();
     }
-
+    
     static connect(): Mongoose.Connection {
         if (this.mongooseInstance) return this.mongooseInstance;
 
@@ -26,3 +24,4 @@ export default class DataAccess {
 }
 
 DataAccess.connect();
+export default DataAccess;
