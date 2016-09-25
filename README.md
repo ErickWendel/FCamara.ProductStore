@@ -9,10 +9,10 @@
 
 #Run
 
-`npm install -g gulp tsd typescript && npm install <br />`
-`tsd install`
-` gulp start`
-` npm start`
+`npm install -g gulp tsd typescript && npm install`  <br />
+`tsd install`  <br />
+` gulp start`  <br />
+` npm start`   <br />
 
 
 localhost:3000/documentation  ----> api
