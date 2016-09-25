@@ -29,6 +29,11 @@ gulp.task('default', [
 
 ]);
 
+gulp('start', 
+    'moveContent',
+    'moveLib',
+    'compileTs');
+
 
 gulp.task('compileTs', () => {
 

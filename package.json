@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node lib/presentation/API/Index.js && node lib/presentation/SPA/Index.js",
+    "start": "node_modules/pm2/bin/pm2 start lib/presentation/API/Index.js && node_modules/pm2/bin/pm2 start lib/presentation/SPA/Index.js",
     "test": "node_modules/gulp-mocha/node_modules/mocha/bin/mocha lib/tests.api/*/*.js"
   },
   "author": "",
@@ -17,6 +17,7 @@
     "gulp-nodemon": "^2.1.0",
     "gulp-typescript": "^3.0.0",
     "gulp-uglify": "^2.0.0",
+    "pm2": "^2.0.15",
     "typescript": "^2.0.3"
   },
   "dependencies": {
