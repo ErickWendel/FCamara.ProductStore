@@ -3,7 +3,7 @@ import * as Hapi from 'hapi'
 import Constants from '../../config/constants/constants';
 const Good = require('good');
 const GoodConsole = require('good-console');
-
+ 
 export default class Logger {
 
     static info(): Object {

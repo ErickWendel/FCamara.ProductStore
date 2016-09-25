@@ -1,6 +1,6 @@
-import * as async from 'bluebird'; 
+import * as async from 'bluebird';
 import Product from '../../entities/Product';
 export interface IProductRepository {
-    getAll(): async<Product[]>;
+    getAll(skip: number, limit: number): async<Product[]>;
     mockData(products: Product[]): async<Object>;
 }

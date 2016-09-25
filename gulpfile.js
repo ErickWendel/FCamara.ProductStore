@@ -6,23 +6,32 @@ let nodemon = require('gulp-nodemon');
 let mocha = require('gulp-mocha');
 let mainBowerFiles = require('gulp-main-bower-files');
 let uglify = require('gulp-uglify');
-
+let util = require('gulp-util');
 let tsProject = tsc.createProject('tsconfig.json');
 let sourceFiles = 'src/**/*.ts';
 let testFiles = 'test/**/*.ts';
 let compiledTest = 'lib/test*/*/*.js';
-let ignoreFiles = 'src/presentation/SPA/lib';
-let contentSrc = 'src/presentation/SPA/content/*';
+let libSrcFiles = 'src/presentation/SPA/lib/**';
+let libDestFiles = 'lib/presentation/SPA/lib';
+let contentSrc = 'src/presentation/SPA/content/**/*';
 let contentLib = 'lib/presentation/SPA/content';
-// let entryPoint = './lib/presentation/SPA/app/Index.js';
+// let entryPoint = './lib/presentation/SPA/Index.js';
 let entryPoint = './lib/presentation/API/index.js';
 let outDir = require('./tsconfig.json').compilerOptions.outDir;
+gulp.task('default', [
+    'moveContent',
+    'moveLib',
+    'compileTs',
+    'watchTs',
+    'watchLib',
+    'watchContent',
+    'nodemon'
 
-// gulp.task('default', ['compile', 'nodemon', 'watch', 'watchContent']);
-gulp.task('default', ['compile', 'nodemon', 'watch']);
+]);
 
 
-gulp.task('compile', () => {
+gulp.task('compileTs', () => {
+
     let tsResult = gulp.src([sourceFiles, testFiles])
         .pipe(sourcemaps.init())
         .pipe(tsProject('default'));
@@ -32,26 +41,30 @@ gulp.task('compile', () => {
         .pipe(gulp.dest(outDir));
 });
 
-gulp.task('move', function(){
-    gulp.src([contentSrc])
-        .pipe(gulp.dest(contentLib));
+gulp.task('moveContent', function () {
+    move(contentSrc, contentLib);
 });
 
-
-/**
- * Watch for changes in TypeScript, HTML and CSS files.
- */
-gulp.task('watch', function () {
-    gulp.watch([sourceFiles, testFiles], ['compile'])
-        .on('change', (e) => {
-            console.log('TypeScript file ' + e.path + ' has been changed. Compiling.');
-        });
+gulp.task('moveLib', function () {
+    move(libSrcFiles, libDestFiles);
 });
+
+gulp.task('watchTs', function () {
+    watch([sourceFiles, testFiles], ['compileTs'], (e) => {
+        console.log(`TypeScript file ${e.path} has been changed. Compiling.`);
+    });
+});
+
+gulp.task('watchLib', function () {
+    watch([libSrcFiles], ['moveLib'], (e) => {
+        console.log(`Content Lib updated: ${e.path}`);
+    });
+});
+
 gulp.task('watchContent', function () {
-    gulp.watch([contentSrc], ['move'])
-        .on('change', (e) => {
-            console.log('Content updated');
-        });
+    watch([contentSrc], ['moveContent'], (e) => {
+        console.log(`Content Updated: ${e.path}`);
+    });
 });
 
 gulp.task('test', () => {
@@ -66,3 +79,15 @@ gulp.task('nodemon', () => {
         env: { 'NODE_ENV': 'development' }
     });
 });
+
+function watch(watchFiles, task, cb) {
+    gulp.watch(watchFiles, task)
+        .on('change', cb);
+}
+
+function move(src, dest) {
+    util.log(`moving ${src} to ${dest}`);
+    gulp.src([src])
+        .pipe(gulp.dest(dest));
+
+}

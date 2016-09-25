@@ -14,8 +14,8 @@ export default class ProductRepository implements IProductRepository {
         this._db = async.promisifyAll(ProductSchema.getSchema());
         
     }
-    getAll(): async<Product[]> {
-        return this._db.findAsync({}); 
+    getAll(skip: number, limit: number): async<Product[]> {
+        return this._db.findAsync({}, {__v: 0}, { skip: skip, limit: limit });
         
     }
     remove(): async<Object> {

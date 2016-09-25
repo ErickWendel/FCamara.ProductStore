@@ -13,10 +13,10 @@ export default class ProductApplication implements IProductApplication {
     constructor(@inject("IProductRepository") productReposity: IProductRepository) {
         this._productRepository = productReposity;
     }
-    list(): async<Product[]> {
+    list(skip: number, limit: number): async<Product[]> {
 
         return this._productRepository
-                    .getAll();
+                    .getAll(skip, limit);
                     
     }
     insertMany(): async<Object> {

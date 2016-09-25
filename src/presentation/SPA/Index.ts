@@ -6,18 +6,14 @@ let app     = express();
 let path    = require("path");
 
  
-app.use('/content', express.static(__dirname + '/content'));
-app.use('/fonts', express.static(__dirname + '/fonts'));
-app.use('/img', express.static(__dirname + '/img'));
-app.use('/js', express.static(__dirname + '/js'));
-app.use(express.static(path.join(__dirname, 'public')));    
-
-app.get('*', (req,res) => {
-  res.sendFile(path.join(__dirname, '/content/index.html')); 
+app.use(express.static(__dirname));
+app.use(express.static(path.join(__dirname, 'content')));
+app.all('*', function(req, res, next) {
+    res.sendFile('/content/index.html', { root: __dirname });
 });
 
 const port = process.env.PORT || Constants.CLIENT.PORT;
 const ip = process.env.IP || Constants.CLIENT.HOST;
 app.listen(port, ip);
 
-console.log(`Running at Port`); 
+console.log(`Running at Port: ${port}`); 

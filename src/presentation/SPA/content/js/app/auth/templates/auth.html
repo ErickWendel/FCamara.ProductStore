@@ -1,0 +1,16 @@
+<section layout="row" layout-sm="column" layout-align="space-between end" class="md-padding">
+
+    <div layout="column" flex="20" layout-align="space-between end">
+        <md-button class="md-raised md-primary" ng-click="vm.generateToken()">Gerar Token</md-button>
+    </div>
+    <div layout="column" layout-align="end" flex="33">
+        <div layout="column" flex="50">
+            Token: {{vm.token}}
+        </div>
+        <div layout="column" flex="50">
+            Token Expira em: {{vm.second}} segundos.
+        </div>
+    </div>
+
+
+</section>

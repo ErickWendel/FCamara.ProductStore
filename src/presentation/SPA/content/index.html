@@ -1,1 +1,33 @@
-oieaa
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <title>Product Store - Erick Wendel</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../lib/angular-material/angular-material.min.css">
+    <link rel="stylesheet" href="../lib/angular-material-data-table/dist/md-data-table.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body ng-app="store" ng-cloak>
+    <ui-view></ui-view>
+    <footer>
+        <script src="../lib/angular/angular.min.js"></script>
+        <script src="../lib/angular-ui-router/release/angular-ui-router.min.js"></script>
+        <script src="../lib/angular-animate/angular-animate.min.js"></script>
+        <script src="../lib/angular-aria/angular-aria.min.js"></script>
+        <script src="../lib/angular-material/angular-material.min.js"></script>
+        <script src="../lib/angular-material-data-table/dist/md-data-table.min.js"></script>
+
+        <script src="js/app/shared/routes/routes.js"></script>
+        <script src="js/app/shared/config/config.js"></script>
+        <script src="js/app/shared/config/constants.js"></script>
+        <script src="js/app/product/controllers/productController.js"></script>
+        <script src="js/app/product/services/productService.js"></script>
+        <script src="js/app/auth/controllers/authController.js"></script>
+        <script src="js/app/auth/services/authService.js"></script>
+        <script src="js/app/app.js"></script>
+    </footer>
+</body>
+
+</html>

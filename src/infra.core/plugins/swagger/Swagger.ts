@@ -6,14 +6,14 @@ const HapiSwagger = require('hapi-swagger');
 
 export default class Swagger {
 
-   static info() {
+    static info() {
         return {
             name: "Swagger Documentation",
             version: "1.0.0"
         };
     }
 
-   static register(server: Hapi.Server) {
+    static register(server: Hapi.Server) {
         server.register([
             Inert,
             Vision,
@@ -23,7 +23,15 @@ export default class Swagger {
                     info: {
                         'title': 'Product Store Documentation',
                         'version': '1.0',
-                    }
+                    },
+                    securityDefinitions: {
+                        'jwt': {
+                            'type': 'apiKey',
+                            'name': 'Authorization',
+                            'in': 'header'
+                        }
+                    },
+                    security: [{ 'jwt': [] }]
                 }
             }]);
     }
