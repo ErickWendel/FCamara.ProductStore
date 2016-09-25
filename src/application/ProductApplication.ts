@@ -7,7 +7,7 @@ import Product from '../domain/entities/product';
 
 
 @injectable()
-export class ProductApplication implements IProductApplication {
+export default class ProductApplication implements IProductApplication {
 
     private _productRepository: IProductRepository;
     constructor(@inject("IProductRepository") productReposity: IProductRepository) {
@@ -37,3 +37,4 @@ export class ProductApplication implements IProductApplication {
         return products;
     }
 }
+Object.seal(ProductApplication);

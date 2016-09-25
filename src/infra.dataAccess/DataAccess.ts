@@ -24,4 +24,5 @@ class DataAccess {
 }
 
 DataAccess.connect();
+Object.seal(DataAccess);
 export default DataAccess;

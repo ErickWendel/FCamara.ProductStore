@@ -3,7 +3,7 @@ import { injectable, inject, } from "inversify";
 import { ILoginApplication  } from '../domain/contracts/application/ILoginApplication';
 
 @injectable()
-class LoginApplication implements ILoginApplication {
+export default class LoginApplication implements ILoginApplication {
     
     getExpirationFromJwt(jwt: Object): number {
         const stringBuffer = jwt.toString().split('.')[1];
@@ -13,4 +13,3 @@ class LoginApplication implements ILoginApplication {
     }
 }
 Object.seal(LoginApplication);
-export default LoginApplication;

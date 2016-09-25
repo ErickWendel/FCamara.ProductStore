@@ -1,16 +1,16 @@
 import "reflect-metadata";
 import { injectable, inject, } from "inversify";
 import * as Hapi from "hapi";
-import { BaseRoutes } from '../base/BaseRoutes';
+import BaseRoutes from '../base/BaseRoutes';
 import ProductController from '../../controllers/ProductsController';
-import { KernelConfig } from './../../../../infra.core.ioC/config/Config';
-import { IProductApplication } from './../../../../domain/contracts/application/IProductApplication';
-import { IBaseRoute as IBaseRoute } from '../../../../domain/contracts/routes/IBaseRoute';
+import KernelConfig from './../../../../infra.core.ioC/config/Config';
 import Constants from './../../../../infra.core/config/constants/constants';
 import Product from './../../../../domain/entities/Product';
+import { IProductApplication} from './../../../../domain/contracts/application/IProductApplication';
+import { IBaseRoute } from '../../../../domain/contracts/routes/IBaseRoute';
 const config = require('../../../../../config');
 
-export class ProductRoutes extends BaseRoutes implements IBaseRoute {
+export default class ProductRoutes extends BaseRoutes implements IBaseRoute {
     private _productController: ProductController;
 
     constructor(server: Hapi.Server) {

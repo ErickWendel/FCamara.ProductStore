@@ -3,7 +3,7 @@ import DataAccess from '../DataAccess';
 const mongoose = DataAccess.mongooseInstance;
 const mongooseCon = DataAccess.mongooseConnection;
 
-export class ProductSchema {
+export default class ProductSchema {
     static getSchema () {
         const options = mongoose.Schema({
             id: Number,
@@ -14,3 +14,5 @@ export class ProductSchema {
         return mongooseCon.model(Constants.MONGOOSE_MODEL, options);
     }
 }
+
+Object.seal(ProductSchema);

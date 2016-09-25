@@ -12,13 +12,14 @@ let sourceFiles = 'src/**/*.ts';
 let testFiles = 'test/**/*.ts';
 let compiledTest = 'lib/test*/*/*.js';
 let ignoreFiles = 'src/presentation/SPA/lib';
-let entryPoint = './lib/presentation/SPA/app/Index.js';
-let contentSrc = 'src/presentation/SPA/app/content/*';
-let contentLib = 'lib/presentation/SPA/app/content';
-// let entryPoint = './lib/presentation/API/index.js';
+let contentSrc = 'src/presentation/SPA/content/*';
+let contentLib = 'lib/presentation/SPA/content';
+// let entryPoint = './lib/presentation/SPA/app/Index.js';
+let entryPoint = './lib/presentation/API/index.js';
 let outDir = require('./tsconfig.json').compilerOptions.outDir;
 
-gulp.task('default', ['compile', 'nodemon', 'watch', 'watchContent']);
+// gulp.task('default', ['compile', 'nodemon', 'watch', 'watchContent']);
+gulp.task('default', ['compile', 'nodemon', 'watch']);
 
 
 gulp.task('compile', () => {
@@ -41,7 +42,7 @@ gulp.task('move', function(){
  * Watch for changes in TypeScript, HTML and CSS files.
  */
 gulp.task('watch', function () {
-    gulp.watch([sourceFiles, testFiles], ['compile', 'test'])
+    gulp.watch([sourceFiles, testFiles], ['compile'])
         .on('change', (e) => {
             console.log('TypeScript file ' + e.path + ' has been changed. Compiling.');
         });
@@ -53,7 +54,7 @@ gulp.task('watchContent', function () {
         });
 });
 
-gulp.task('test', ['watch'], () => {
+gulp.task('test', () => {
     return gulp.src([compiledTest], { read: false })
         .pipe(mocha({ reporter: 'list' }));
 });
@@ -62,7 +63,6 @@ gulp.task('test', ['watch'], () => {
 gulp.task('nodemon', () => {
     nodemon({
         script: entryPoint,
-        env: { 'NODE_ENV': 'development' },
-        // tasks: ['test']
+        env: { 'NODE_ENV': 'development' }
     });
 });

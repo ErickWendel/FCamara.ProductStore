@@ -1,8 +1,8 @@
 import * as Hapi from "hapi";
 import * as async from 'bluebird';
-import { AuthRoutes } from '../routes/auth/AuthRoutes';
-import { ProductRoutes } from '../routes/products/ProductRoutes';
-import { BaseRoutes } from './base/BaseRoutes';
+import AuthRoutes  from '../routes/auth/AuthRoutes';
+import ProductRoutes from '../routes/products/ProductRoutes';
+import BaseRoutes from './base/BaseRoutes';
 import { IBaseRoute } from '../../../domain/contracts/routes/IBaseRoute';
 let hapiJwt = require('hapi-auth-jwt2');
 

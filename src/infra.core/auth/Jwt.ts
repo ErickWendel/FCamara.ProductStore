@@ -10,7 +10,7 @@ export default class Jwt {
     };
 
 
-    public setToken(accountId: Object): Object {
+    public setToken(): Object {
         return jwt.sign(Constants.JWT.DEFAULT_OBJECT,
 
             Constants.JWT.PRIVATE_KEY_JWT,
@@ -24,9 +24,9 @@ export default class Jwt {
 
     public static validateToken(request, decodedToken, callback) {
         var error;
-        var credentials = { 'fakeUser': 'erickwendel' };
-        return callback(error, false, credentials);
-
+        var credentials = Constants.JWT.DEFAULT_OBJECT;
+        return callback(error, true, credentials);
     };
 
 }
+Object.seal(Jwt);

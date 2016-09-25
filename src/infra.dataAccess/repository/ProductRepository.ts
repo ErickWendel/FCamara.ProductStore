@@ -1,14 +1,14 @@
-import * as async from 'bluebird';
 import "reflect-metadata";
+import * as async from 'bluebird';
 import { injectable, inject, } from "inversify";
-
-import { ProductSchema } from '../schemas/ProductSchema';
+import ProductSchema from '../schemas/ProductSchema';
 import DataAccess from '../DataAccess';
 import Product from '../../domain/entities/Product';
-import { IProductRepository } from '../../domain/contracts/repository/IProductRepository';
 import Constants from '../../infra.core/config/constants/constants';
+import { IProductRepository } from '../../domain/contracts/repository/IProductRepository';
+
 @injectable()
-export class ProductRepository implements IProductRepository {
+export default class ProductRepository implements IProductRepository {
     private _db: any;
     constructor() {
         this._db = async.promisifyAll(ProductSchema.getSchema());
@@ -34,3 +34,4 @@ export class ProductRepository implements IProductRepository {
     
 
 }
+Object.seal(ProductRepository);

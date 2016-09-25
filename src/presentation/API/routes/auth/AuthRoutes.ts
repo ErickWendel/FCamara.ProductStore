@@ -3,13 +3,13 @@ import ProductsController from '../../controllers/ProductsController';
 import LoginController from '../../controllers/LoginController';
 import Jwt from '../../../../infra.core/auth/jwt';
 import Constants from '../../../../infra.core/config/constants/constants';
-import { BaseRoutes } from '../base/BaseRoutes';
-import { KernelConfig } from './../../../../infra.core.ioC/config/Config';
+import KernelConfig from './../../../../infra.core.ioC/config/Config';
+import BaseRoutes from '../base/BaseRoutes';
 import { ILoginApplication } from './../../../../domain/contracts/application/ILoginApplication';
 import { IBaseRoute } from '../../../../domain/contracts/routes/IBaseRoute';
 const config = require('../../../../../config');
-
-export class AuthRoutes extends BaseRoutes implements IBaseRoute {
+ 
+export default class AuthRoutes extends BaseRoutes implements IBaseRoute {
     private _loginController: LoginController;
     constructor(server: Hapi.Server) {
         super(server);
@@ -47,3 +47,4 @@ export class AuthRoutes extends BaseRoutes implements IBaseRoute {
         return this._server;
     }
 }
+Object.seal(AuthRoutes);
