@@ -12,6 +12,7 @@
         vm.second = 0;
         vm.secondTime = 0;
         vm.token = '';
+        vm.expired = false;
         vm.generateToken = generateToken;
         generateToken();
 
@@ -21,18 +22,21 @@
             AuthService.getToken().then(function (result) {
                 vm.token = result.token;
                 AuthService.setToken(result.token);
-                vm.second = result.expiration;
+                vm.secondTime = result.expiration;
+                updateTime();
 
             });
         }
+        
         function updateTime() {
 
             $interval(function () {
-                if (vm.second)
-                    var data = new Date()
-                    data.setTime(vm.second);
-                    vm.second = ((new Date().getTime() - data.getTime()) / 1000);
-            }, 1000);
+               var a = new Date();
+                a.setTime(vm.secondTime);
+                var result = Math.round((a - new Date().getTime() / 1000)) * 1;
+                vm.expired = result <= 0;
+                vm.second = result;
+            }, 500);
         }
     }
 })();

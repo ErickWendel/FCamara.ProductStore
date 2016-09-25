@@ -5,8 +5,8 @@
         .module('productController.controllers', [])
         .controller('ProductController', ProductController);
 
-    ProductController.$inject = ['ProductService', '$mdToast'];
-    function ProductController(ProductService, $mdToast) {
+    ProductController.$inject = ['ProductService', '$mdToast', '$q', '$scope'];
+    function ProductController(ProductService, $mdToast, $q, $scope) {
         'use strict';
         var vm = this;
 
@@ -31,9 +31,11 @@
             limit: 5,
             page: 1
         };
+
         vm.logPagination = logPagination;
         vm.updateList = updateList;
         vm.updateDatabase = updateDatabase;
+
         setTimeout(function () {
             updateList();
         }, 500);
@@ -43,36 +45,41 @@
             updateList();
         }
         function updateList() {
-            ProductService.list(vm.page, vm.query.limit).then(onResult);
+            return ProductService.list(vm.page, 50)
+                .then(onResult);
         }
 
         function onResult(result) {
             if (result.error)
-                showCustomToast(result.error);
+                return showCustomToast(result.error);
 
-            else {
-                vm.items.count = result.length
-                vm.items.data = result;
-                vm.text = '';
-                showCustomToast('List updated with success!');
+            vm.items.count = result.count;
+            vm.items.data = result.products;
+            vm.text = '';
 
-            };
+            console.log('result', result);
+            return showCustomToast('List updated with success!');
+
+
         }
         function onUpdate(result) {
-            if (result.error)
+            if (result.error) {
                 showCustomToast(result.error);
+            }
             else if (result === "OK") {
                 showCustomToast('Database updated with success!');
+                updateList();
             }
-            else 
+
+            else
                 showCustomToast('error!');
         }
         function updateDatabase() {
-            ProductService.insertData().then(onUpdate);
+            vm.promise = ProductService.insertData().then(onUpdate);
         }
         function logPagination(page, limit) {
-            vm.page = page;
             console.log('limit: ', limit);
+
         }
 
         function showCustomToast(msg) {

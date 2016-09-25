@@ -14,9 +14,9 @@
 
         return service;
 
-        function list() {
+        function list(skip, limit) {
 
-            return $http.get(Constants.GET_PRODUCTS).then(function (result) {
+            return $http.get(Constants.GET_PRODUCTS+ "?skip="+ skip + "&limit="+limit).then(function (result) {
                 return result.data;
             }).catch(function (res) {
                 if (!res.status === 401) throw new Error(res);

@@ -15,8 +15,8 @@ let libSrcFiles = 'src/presentation/SPA/lib/**';
 let libDestFiles = 'lib/presentation/SPA/lib';
 let contentSrc = 'src/presentation/SPA/content/**/*';
 let contentLib = 'lib/presentation/SPA/content';
-// let entryPoint = './lib/presentation/SPA/Index.js';
-let entryPoint = './lib/presentation/API/index.js';
+let entryPoint = './lib/presentation/SPA/Index.js';
+// let entryPoint = './lib/presentation/API/index.js';
 let outDir = require('./tsconfig.json').compilerOptions.outDir;
 gulp.task('default', [
     'moveContent',

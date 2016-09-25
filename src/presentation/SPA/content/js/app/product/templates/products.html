@@ -1,39 +1,30 @@
-<p>{{vm.text}}</p>
 <div layout="column" flex="20">
-    <md-button flex layout="col" class="md-raised md-primary" ng-click="vm.updateList()">Atualizar Lista</md-button>
-    <md-button flex layout="col" class="md-raised md-warn" ng-click="vm.updateDatabase()">Popular base de dados</md-button>
+    <md-button flex layout="col" class="md-raised md-primary" ng-click="vm.updateList()">Update List</md-button>
+    <md-button flex layout="col" class="md-raised md-warn" ng-click="vm.updateDatabase()">Add Database Data</md-button>
 </div>
 
-<div ng-if="vm.items.data.length > 0">
+<md-table-container>
+    <table md-table md-row-select="vm.options.rowSelection" ng-model="vm.selected">
+        <thead md-head md-order="vm.query.order">
+            <tr md-row>
+                <th md-column md-order-by="id" hide-gt-xs show-gt-md><span>Id</span></th>
+                <th md-column md-order-by="name" hide-gt-xs show-gt-md><span>Name</span></th>
+                <th md-column md-order-by="description" hide-gt-xs show-gt-md><span>Description</span></th>
+                <th md-column md-order-by="price" hide-gt-xs show-gt-md><span>Price</span></th>
+            </tr>
+        </thead>
+        <tbody md-body>
+            <tr md-row md-select="dessert" md-auto-select="vm.options.autoSelect" ng-repeat="item in vm.items.data | filter: filter.search | orderBy: vm.query.order | limitTo: vm.query.limit : (vm.query.page -1) * vm.query.limit">
 
-    <md-table-container>
-        <table md-table md-row-select="vm.options.rowSelection" 
-                multiple="{{vm.options.multiSelect}}" ng-model="vm.selected" md-progress="vm.promise">
-            <thead md-head md-order="vm.query.order">
-                <tr md-row>
-                    <th md-column md-order-by="id" hide-gt-xs show-gt-md><span>Id</span></th>
-                    <th md-column md-order-by="name" hide-gt-xs show-gt-md><span>Nome</span></th>
-                    <th md-column md-order-by="description" hide-gt-xs show-gt-md><span>Descricao</span></th>
-                    <th md-column md-order-by="price" hide-gt-xs show-gt-md><span>Preco</span></th>
-                </tr>
-            </thead>
-            <tbody md-body>
-                <tr md-row md-select="dessert" md-auto-select="vm.options.autoSelect" ng-repeat="item in vm.items.data | filter: filter.search | orderBy: vm.query.order | limitTo: vm.query.limit : (vm.query.page -1) * vm.query.limit">
+                <td md-cell hide-gt-xs show-gt-md>{{item.id }}</td>
+                <td md-cell hide-gt-xs show-gt-md>{{item.name}}</td>
+                <td md-cell hide-gt-xs show-gt-md>{{item.description}}</td>
+                <td md-cell hide-gt-xs show-gt-md>R$ {{item.price | number: 2}}</td>
+            </tr>
+        </tbody>
+    </table>
+</md-table-container>
 
-                    <td md-cell hide-gt-xs show-gt-md>{{item.id }}</td>
-                    <td md-cell hide-gt-xs show-gt-md>{{item.name}}</td>
-                    <td md-cell hide-gt-xs show-gt-md>{{item.description}}</td>
-                    <td md-cell hide-gt-xs show-gt-md>{{item.price | number: 2}}</td>
-                </tr>
-            </tbody>
-        </table>
-    </md-table-container>
-
-    <md-table-pagination 
-            md-limit="vm.query.limit" md-limit-options="vm.limitOptions" md-page="vm.query.page" md-total="{{vm.items.count}}"
-        md-page-select="vm.options.pageSelect" md-boundary-links="vm.options.boundaryLinks" md-on-paginate="vm.logPagination">
-    </md-table-pagination>
-</div>
-<div ng-if="!vm.items.data.length > 0">
-    
-</div>
+<md-table-pagination md-limit="vm.query.limit" md-limit-options="vm.limitOptions" md-page="vm.query.page" md-total="{{vm.items.count}}"
+    md-page-select="vm.options.pageSelect" md-boundary-links="vm.options.boundaryLinks" md-on-paginate="vm.logPagination">
+</md-table-pagination>
