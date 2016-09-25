@@ -4,20 +4,29 @@ import { injectable, inject, } from "inversify";
 import { IProductRepository } from '../domain/contracts/repository/IProductRepository';
 import { IProductApplication } from '../domain/contracts/application/IProductApplication';
 import Product from '../domain/entities/product';
+import ProductDto from '../domain/entities/dto/ProductDto';
 
 
 @injectable()
 export default class ProductApplication implements IProductApplication {
 
     private _productRepository: IProductRepository;
-    constructor(@inject("IProductRepository") productReposity: IProductRepository) {
+    constructor( @inject("IProductRepository") productReposity: IProductRepository) {
         this._productRepository = productReposity;
     }
-    list(skip: number, limit: number): async<Product[]> {
+    list(skip: number, limit: number): async<ProductDto> {
+        if (skip === 0) skip += 1;
 
         return this._productRepository
-                    .getAll(skip, limit);
-                    
+            .getAll(skip, limit)
+            .then((result: any) => {
+                const values = result.docs;
+                let dto = new ProductDto();
+                values.map(i => dto.products.push(i));
+                dto.count = result.total;
+                return dto;
+            });
+
     }
     insertMany(): async<Object> {
         return this._productRepository.mockData(this.generateData());

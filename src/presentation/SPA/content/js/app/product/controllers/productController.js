@@ -13,7 +13,7 @@
         vm.selected = [];
         vm.items = {};
         vm.text = '';
-
+        vm.page = 0;
         vm.limitOptions = [5, 10, 15];
         vm.options = {
             rowSelection: true,
@@ -43,7 +43,7 @@
             updateList();
         }
         function updateList() {
-            ProductService.list().then(onResult);
+            ProductService.list(vm.page, vm.query.limit).then(onResult);
         }
 
         function onResult(result) {
@@ -71,7 +71,7 @@
             ProductService.insertData().then(onUpdate);
         }
         function logPagination(page, limit) {
-            console.log('page: ', page);
+            vm.page = page;
             console.log('limit: ', limit);
         }
 

@@ -40,6 +40,8 @@
     "jsonwebtoken": "^7.1.9",
     "lab": "^11.0.1",
     "mongoose": "^4.6.1",
+    "mongoose-paginate": "^5.0.0",
+    "mongoose-pagination": "^1.0.0",
     "reflect-metadata": "^0.1.8",
     "vision": "^4.1.0"
   }

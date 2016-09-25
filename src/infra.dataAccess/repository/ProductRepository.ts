@@ -15,7 +15,7 @@ export default class ProductRepository implements IProductRepository {
         
     }
     getAll(skip: number, limit: number): async<Product[]> {
-        return this._db.findAsync({}, {__v: 0}, { skip: skip, limit: limit });
+        return this._db.paginateAsync({}, { __v: 0, page: skip, limit: limit });
         
     }
     remove(): async<Object> {

@@ -1,6 +1,5 @@
 import * as Mongoose from "mongoose";
 import Constants from "./../infra.core/config/constants/Constants";
-
 class DataAccess {
     static mongooseInstance: any;
     static mongooseConnection: Mongoose.Connection;
@@ -24,5 +23,6 @@ class DataAccess {
 }
 
 DataAccess.connect();
+
 Object.seal(DataAccess);
 export default DataAccess;

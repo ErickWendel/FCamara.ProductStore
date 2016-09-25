@@ -29,8 +29,9 @@
 
             $interval(function () {
                 if (vm.second)
-                    var data = new Date().setTime(vm.second);
-                vm.second = ((new Date - data) / 1000)
+                    var data = new Date()
+                    data.setTime(vm.second);
+                    vm.second = ((new Date().getTime() - data.getTime()) / 1000);
             }, 1000);
         }
     }

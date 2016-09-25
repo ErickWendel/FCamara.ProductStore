@@ -6,7 +6,7 @@
   "bundle": "typings/tsd.d.ts",
   "installed": {
     "node/node.d.ts": {
-      "commit": "8770da2c8f9aa3c729d9a55916f851025a6a4027"
+      "commit": "b6dd4429d8e87574882fa3c9cf205943d4627336"
     },
     "chai/chai.d.ts": {
       "commit": "d79cd56465f9ed53172dc1617c863a164b0fd7fb"
@@ -15,7 +15,7 @@
       "commit": "d79cd56465f9ed53172dc1617c863a164b0fd7fb"
     },
     "mongoose/mongoose.d.ts": {
-      "commit": "d79cd56465f9ed53172dc1617c863a164b0fd7fb"
+      "commit": "b6dd4429d8e87574882fa3c9cf205943d4627336"
     },
     "hapi/hapi.d.ts": {
       "commit": "d79cd56465f9ed53172dc1617c863a164b0fd7fb"
@@ -58,6 +58,12 @@
     },
     "express/express.d.ts": {
       "commit": "8770da2c8f9aa3c729d9a55916f851025a6a4027"
+    },
+    "mongodb/mongodb.d.ts": {
+      "commit": "b6dd4429d8e87574882fa3c9cf205943d4627336"
+    },
+    "mongoose-paginate/mongoose-paginate.d.ts": {
+      "commit": "b6dd4429d8e87574882fa3c9cf205943d4627336"
     }
   }
 }
