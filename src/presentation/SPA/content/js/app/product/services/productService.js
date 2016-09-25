@@ -20,7 +20,7 @@
                 return result.data;
             }).catch(function (res) {
                 if (!res.status === 401) throw new Error(res);
-                return { error: 'Refresh token, please!' };
+                return { error: 'Token expirado, favor gerar novamente!' };
             });
         }
 
@@ -31,7 +31,7 @@
                 return result.data;
             }).catch(function (res) {
                 if (!res.status === 401) throw new Error(res);
-                return { error: 'Refresh token, please!' };
+                return { error: 'Token expirado, favor gerar novamente!' };
             });
         }
     }

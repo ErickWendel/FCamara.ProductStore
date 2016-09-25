@@ -58,7 +58,7 @@
             vm.text = '';
 
             console.log('result', result);
-            return showCustomToast('List updated with success!');
+            return showCustomToast('Lista atualizada com sucesso!');
 
 
         }
@@ -67,7 +67,7 @@
                 showCustomToast(result.error);
             }
             else if (result === "OK") {
-                showCustomToast('Database updated with success!');
+                showCustomToast('Database atualizado com sucesso!');
                 updateList();
             }
 

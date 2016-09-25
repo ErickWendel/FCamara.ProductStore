@@ -1,6 +1,6 @@
 <div layout="column" flex="20">
-    <md-button flex layout="col" class="md-raised md-primary" ng-click="vm.updateList()">Update List</md-button>
-    <md-button flex layout="col" class="md-raised md-warn" ng-click="vm.updateDatabase()">Add Database Data</md-button>
+    <md-button flex layout="col" class="md-raised md-primary" ng-click="vm.updateList()">Buscar Produtos Ajax</md-button>
+    <md-button flex layout="col" class="md-raised md-warn" ng-click="vm.updateDatabase()">Inserir carga inicial</md-button>
 </div>
 
 <md-table-container>
@@ -8,9 +8,9 @@
         <thead md-head md-order="vm.query.order">
             <tr md-row>
                 <th md-column md-order-by="id" hide-gt-xs show-gt-md><span>Id</span></th>
-                <th md-column md-order-by="name" hide-gt-xs show-gt-md><span>Name</span></th>
-                <th md-column md-order-by="description" hide-gt-xs show-gt-md><span>Description</span></th>
-                <th md-column md-order-by="price" hide-gt-xs show-gt-md><span>Price</span></th>
+                <th md-column md-order-by="name" hide-gt-xs show-gt-md><span>Nome</span></th>
+                <th md-column md-order-by="description" hide-gt-xs show-gt-md><span>Descricao</span></th>
+                <th md-column md-order-by="price" hide-gt-xs show-gt-md><span>Preço</span></th>
             </tr>
         </thead>
         <tbody md-body>
