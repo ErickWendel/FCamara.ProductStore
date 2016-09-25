@@ -6,6 +6,8 @@
 - Swagger
 - Mocha
 - Mongoose
+- AngularJs
+- Angular Material
 
 #Run
 
