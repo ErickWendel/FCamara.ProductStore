@@ -11,9 +11,10 @@
 
 #Run
 
-`sudo npm install -g gulp tsd typescript` <br />
+`sudo npm install -g bower gulp tsd typescript` <br />
 `npm install`  <br />
 `tsd install`  <br />
+`bower install` <br />
 `gulp start`  <br />
 `npm start`   <br />
 
