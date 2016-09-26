@@ -11,10 +11,11 @@
 
 #Run
 
-`npm install -g gulp tsd typescript && npm install`  <br />
+`sudo npm install -g gulp tsd typescript` <br />
+`npm install`  <br />
 `tsd install`  <br />
-` gulp start`  <br />
-` npm start`   <br />
+`gulp start`  <br />
+`npm start`   <br />
 
 
 localhost:3000/documentation  ----> api
