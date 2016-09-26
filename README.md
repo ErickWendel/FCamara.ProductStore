@@ -9,6 +9,10 @@
 - AngularJs
 - Angular Material
 
+#Pre requesites:
+    NodeJs
+    MongoDb
+
 #Run
 
 `sudo npm install -g bower gulp tsd typescript` <br />
@@ -19,7 +23,7 @@
 `npm start`   <br />
 
 
-localhost:3000/documentation  ----> api
+localhost:3000/documentation  ----> API <br />
 localhost:3001/ ------------------> SPA 
 
 
