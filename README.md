@@ -19,7 +19,7 @@
 `npm install`  <br />
 `tsd install`  <br />
 `bower install` <br />
-`gulp start`  <br />
+`gulp`  <br />
 `npm start`   <br />
 
 
