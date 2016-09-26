@@ -22,17 +22,16 @@ gulp.task('default', [
     'moveContent',
     'moveLib',
     'compileTs',
-    'watchTs',
-    'watchLib',
-    'watchContent',
-    'nodemon'
+
+    //tasks for dev
+    
+    // 'watchTs',
+    // 'watchLib',
+    // 'watchContent',
+    // 'nodemon'
 
 ]);
 
-gulp('start', 
-    'moveContent',
-    'moveLib',
-    'compileTs');
 
 
 gulp.task('compileTs', () => {
